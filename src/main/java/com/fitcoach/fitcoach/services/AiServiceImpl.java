@@ -51,9 +51,10 @@ public class AiServiceImpl implements AiService{
     }
 
     @Override
-    public void GeneratePdfFromProgram() {
+    public void generatePdfFromProgram() {
+        String outputPath = "src/main/resources/Pdfs/Output.pdf";
         try {
-            PdfWriter pdfWriter=new PdfWriter("pdfTest");
+            PdfWriter pdfWriter=new PdfWriter(outputPath);
             PdfDocument pdfDocument=new PdfDocument(pdfWriter);
             Document document= new Document(pdfDocument);
             document.add(new Paragraph("Text content......."));

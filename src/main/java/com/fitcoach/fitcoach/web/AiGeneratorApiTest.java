@@ -24,6 +24,12 @@ public class AiGeneratorApiTest {
         return new ResponseEntity(aiService.generateProgram(24,"Bodybuilding","beginner","Full Gym",3), HttpStatus.OK);
     }
 
+    @GetMapping("/generatePdf")
+    public ResponseEntity<?> GeneratePdf(){
+        aiService.generatePdfFromProgram();
+        return new ResponseEntity("Pdf Created", HttpStatus.OK);
+    }
+
 
 
 }

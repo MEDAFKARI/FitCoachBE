@@ -12,7 +12,7 @@ import java.nio.file.Paths;
 @Service
 public class PdfUtils {
 
-    private final Path root = Paths.get("src/main/resources/Pdfs");
+    private final Path root = Paths.get("pdfs/");
 
 
     public Resource load(String fileName) {

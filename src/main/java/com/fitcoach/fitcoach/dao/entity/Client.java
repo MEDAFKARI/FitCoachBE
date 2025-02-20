@@ -1,5 +1,8 @@
 package com.fitcoach.fitcoach.dao.entity;
 
+import com.fitcoach.fitcoach.enums.Equipment;
+import com.fitcoach.fitcoach.enums.Goal;
+import com.fitcoach.fitcoach.enums.Level;
 import com.fitcoach.fitcoach.enums.Role;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -15,6 +18,18 @@ import java.util.*;
 
 @Table(name = "client")
 public class Client extends Person {
+
+    private Integer age;
+
+    @Enumerated(EnumType.STRING)
+    private Equipment equipment;
+
+    @Enumerated(EnumType.STRING)
+    private Goal goal;
+
+    @Enumerated(EnumType.STRING)
+    private Level level;
+    private Integer days_per_week;
 
 
     @OneToMany(mappedBy = "client", cascade = CascadeType.ALL)

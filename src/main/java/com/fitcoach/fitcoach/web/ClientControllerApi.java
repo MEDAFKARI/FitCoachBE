@@ -57,7 +57,8 @@ public class ClientControllerApi {
                                @RequestParam("email") String email,
                                @RequestParam("firstName") String firstName,
                                @RequestParam("lastName") String lastName) throws IOException {
-        ClientDTO clientDTO = new ClientDTO(null,firstName,lastName,email,null,new Date(), Role.USER,new Date(),null,null);
+        ClientDTO clientDTO = ClientDTO.builder().firstName(firstName).lastName(lastName).email(email).createdAt(new Date()).role(Role.USER).updateAt(new Date()).build();
+
         return clientManager.AddClient(avatar,clientDTO);
     }
 

@@ -137,7 +137,7 @@ public class SecurityController {
 
     @PostMapping("/register")
     public Map<String,String> Register(@RequestBody RegisterRequest request){
-
+        Map<String,String> map = new HashMap<>();
         var user = Person.builder()
                 .firstName(request.getFirstName())
                 .lastName(request.getLastName())
@@ -174,7 +174,9 @@ public class SecurityController {
                 jwtClaimsSet
         );
         String jwt = jwtEncoder.encode(jwtEncoderParameters).getTokenValue();
-        return Map.of("access-token",jwt);
+        map.put("role",user.getRole().toString());
+        map.put("access-token",jwt);
+        return map;
     }
 
 //    @PostMapping("/login")

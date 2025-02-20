@@ -12,13 +12,12 @@ import org.springframework.web.bind.annotation.*;
 import java.nio.file.Files;
 
 @RestController
-@RequestMapping("/pdf")
 public class PdfController {
 
     @Autowired
     private PdfUtils pdfUtils;
 
-    @GetMapping("/files/{filename:.+}")
+    @GetMapping("/files/pdfs/{filename:.+}")
     public ResponseEntity<Resource> getFile(@PathVariable String filename) {
         try {
             Resource file = pdfUtils.load(filename);
@@ -35,6 +34,6 @@ public class PdfController {
         }
     }
 
-//    http://localhost:9090/pdf/files/output.pdf for testing the pdf hahowa link a sat 
+//    http://localhost:9090/files/pdfs/output.pdf for testing the pdf hahowa link a sat
 
 }

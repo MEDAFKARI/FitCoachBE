@@ -1,9 +1,12 @@
 package com.fitcoach.fitcoach.services;
 
+import com.fitcoach.fitcoach.Requests.RecommendationRequest;
+import com.fitcoach.fitcoach.Responses.ProgramDTO;
+
 import java.util.Map;
 
 public interface AiService {
-    public String generateProgram(int age, String goal, String level, String equipement, int daysPerWeek);
+    public ProgramDTO generateProgram(String username ,RecommendationRequest request);
 
-    public void generatePdfFromProgram();
+    public String generatePdfFromProgram(String username ,ProgramDTO programDTO);
 }

@@ -1,13 +1,12 @@
 package com.fitcoach.fitcoach.web;
 
 
+import com.fitcoach.fitcoach.Requests.RecommendationRequest;
 import com.fitcoach.fitcoach.services.AiService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.net.ssl.SSLEngineResult;
 
@@ -19,16 +18,16 @@ public class AiGeneratorApiTest {
     private final AiService aiService;
 
 
-    @GetMapping("/generate")
-    public ResponseEntity<?> GenerateWorkout(){
-        return new ResponseEntity(aiService.generateProgram(24,"Bodybuilding","beginner","Full Gym",3), HttpStatus.OK);
+    @PostMapping("/generate/{username}")
+    public ResponseEntity<?> GenerateWorkout(@PathVariable("username")String username ,@RequestBody RecommendationRequest request){
+        return new ResponseEntity(aiService.generateProgram(username, request), HttpStatus.OK);
     }
 
-    @GetMapping("/generatePdf")
-    public ResponseEntity<?> GeneratePdf(){
-        aiService.generatePdfFromProgram();
-        return new ResponseEntity("Pdf Created", HttpStatus.OK);
-    }
+//    @GetMapping("/generatePdf")
+//    public ResponseEntity<?> GeneratePdf(){
+//        aiService.generatePdfFromProgram();
+//        return new ResponseEntity("Pdf Created", HttpStatus.OK);
+//    }
 
 
 
